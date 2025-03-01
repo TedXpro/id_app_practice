@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    home: Card()),
-  );
+  runApp(const MaterialApp(home: Card()));
 }
 
 class Card extends StatefulWidget {
@@ -14,6 +12,8 @@ class Card extends StatefulWidget {
 }
 
 class _CardState extends State<Card> {
+  int level = 100;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +25,16 @@ class _CardState extends State<Card> {
         titleTextStyle: TextStyle(color: Colors.white),
         elevation: 0,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {
+          setState(() {
+            level += 1; 
+          })
+        },
+        backgroundColor: Colors.grey[800],
+        foregroundColor: Colors.amberAccent,
+        child: Icon(Icons.add),
+      ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
         child: Column(
@@ -32,14 +42,11 @@ class _CardState extends State<Card> {
           children: [
             Center(
               child: CircleAvatar(
-              backgroundImage: AssetImage("assets/Jinwoo.jpg"),
-              radius: 50,
+                backgroundImage: AssetImage("assets/Jinwoo.jpg"),
+                radius: 50,
+              ),
             ),
-            ),
-            Divider(
-              height: 50,
-              color: Colors.grey[800],
-            ),
+            Divider(height: 50, color: Colors.grey[800]),
             Text(
               "NAME",
               style: TextStyle(color: Colors.grey, letterSpacing: 2),
@@ -70,12 +77,24 @@ class _CardState extends State<Card> {
               ),
             ),
             SizedBox(height: 30),
+            Text(
+              "Level",
+              style: TextStyle(color: Colors.grey, letterSpacing: 2),
+            ),
+            SizedBox(height: 10),
+            Text(
+              "$level",
+              style: TextStyle(
+                color: Colors.amberAccent,
+                letterSpacing: 2,
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 30),
             Row(
               children: [
-                Icon(
-                  Icons.email, 
-                  color: Colors.grey[400]
-                ),
+                Icon(Icons.email, color: Colors.grey[400]),
                 SizedBox(width: 10),
                 Text(
                   "Jinwoosung@gmail.com",
